@@ -1,5 +1,4 @@
 
-import java.lang.reflect.Array;
 
 public class MyString {
     public static void main(String[] args) {
@@ -21,41 +20,49 @@ public class MyString {
 
     /** Returns the lowercase version of the given string. */
     public static String lowerCase(String str) {
-        char[] arr = new char[str.length()];
-        for (int i = 0; i < str.length(); i++)
-         {
-            arr[i] = str.charAt(i);
-        }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >= 'A' && arr[i] <= 'Z') {
-                arr[i] = (char) (arr[i] + 32); 
+        String newword="";
+        char[] lowerCaseword = new char[str.length()];
+       
+        for (int i = 0; i < str.length(); i++){
+             char charOriginal = str.charAt(i);
+             if (charOriginal >= 'A' && charOriginal <= 'Z') {
+             lowerCaseword[i] = (char) (charOriginal + 32); 
             }
+            else 
+            {
+                lowerCaseword[i] = charOriginal; 
+            } 
         }
-
-        // Replace the following statement with your code
-        String result = "";
-        for (int i = 0; i < arr.length; i++) {
-            result += arr[i];
+        for (int j = 0; j < str.length(); j++) {
+            newword =  newword + lowerCaseword[j];
         }
-
+        return newword;
+        }
+    
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        char[] arr = new char[str.length()];
-        for (int i = 0; i < str.length(); i++)
-         {
-            arr[i] = str.charAt(i);
+        if (str2.isEmpty()){
+            return true;
         }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >= 'A' && arr[i] <= 'Z') {
-                arr[i] = (char) (arr[i] + 32); 
+    
+        if (str1.length() < str2.length()) { 
+        return false; 
+        }
+          
+           for (int i = 0; i <= str1.length() - str2.length(); i++){
+                boolean equal = true;
+                for (int j = 0; j < str2.length(); j++) {
+                     if (str2.charAt(j) !=  str1.charAt(i+j)) {
+                        equal = false;
+                        break;
+                    }
+                }
+                if (equal){
+                return true; 
+                }
             }
+            
+        return false; 
         }
-        // Replace the following statement with your code
-        String result = "";
-        for (int i = 0; i < arr.length; i++) {
-            result += arr[i];
-        }
-        return  result;
     }
-}
