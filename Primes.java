@@ -32,10 +32,11 @@ public class Primes {
                 primeCounter ++;
             }
         }
-        double percentage = ((double) primeCounter / (n - 1)) * 100;
-        percentage = Math.round(percentage * 100.0) / 100.0;
-        System.out.println("There are " + primeCounter + " primes between 2 and " + n + " (" + percentage + " % are primes)");
+
+        long precent = (primeCounter*100)/ n;
+        System.out.println("There are "+primeCounter+" primes between 2 and "+ n +" ("+precent+"% are primes)");
     }
+       
     }
 
        

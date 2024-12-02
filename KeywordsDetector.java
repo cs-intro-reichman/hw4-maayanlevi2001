@@ -21,6 +21,69 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        for (int i = 0; i < sentences.length; i++) {
+            String originalSentences = sentences[i];
+            String newSentences = lowerCase(sentences[i]);
+
+            for (int j = 0; j < keywords.length; j++) {
+                String neWkeywords = lowerCase(keywords[j]);
+                
+                if (contains(newSentences, neWkeywords)) {
+                    System.out.println(originalSentences);
+                    break;
+                }
+            }
+        }
     }
+        
+
+
+
+        public static String lowerCase(String str) {
+            String newword="";
+            char[] lowerCaseword = new char[str.length()];
+           
+            for (int i = 0; i < str.length(); i++){
+                 char charOriginal = str.charAt(i);
+                 if (charOriginal >= 'A' && charOriginal <= 'Z') {
+                 lowerCaseword[i] = (char) (charOriginal + 32); 
+                }
+                else 
+                {
+                    lowerCaseword[i] = charOriginal; 
+                } 
+            }
+            for (int j = 0; j < str.length(); j++) {
+                newword =  newword + lowerCaseword[j];
+            }
+            return newword;
+            }
+        
+        
+
+
+        public static boolean contains(String str1, String str2) {
+            if (str2.isEmpty()){
+                return true;
+            }
+        
+            if (str1.length() < str2.length()) { 
+            return false; 
+            }
+              
+               for (int i = 0; i <= str1.length() - str2.length(); i++){
+                    boolean equal = true;
+                    for (int j = 0; j < str2.length(); j++) {
+                         if (str2.charAt(j) !=  str1.charAt(i+j)) {
+                            equal = false;
+                            break;
+                        }
+                    }
+                    if (equal){
+                    return true; 
+                    }
+                }
+                
+            return false; 
+            }
 }
