@@ -1,3 +1,5 @@
+
+
 public class MyString {
     public static void main(String[] args) {
         System.out.println("Testing lowercase:");
@@ -18,13 +20,49 @@ public class MyString {
 
     /** Returns the lowercase version of the given string. */
     public static String lowerCase(String str) {
-        // Replace the following statement with your code
-        return null;
-    }
+        String newword="";
+        char[] lowerCaseword = new char[str.length()];
+       
+        for (int i = 0; i < str.length(); i++){
+             char charOriginal = str.charAt(i);
+             if (charOriginal >= 'A' && charOriginal <= 'Z') {
+             lowerCaseword[i] = (char) (charOriginal + 32); 
+            }
+            else 
+            {
+                lowerCaseword[i] = charOriginal; 
+            } 
+        }
+        for (int j = 0; j < str.length(); j++) {
+            newword =  newword + lowerCaseword[j];
+        }
+        return newword;
+        }
+    
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        // Replace the following statement with your code
-        return false;
+        if (str2.isEmpty()){
+            return true;
+        }
+    
+        if (str1.length() < str2.length()) { 
+        return false; 
+        }
+          
+           for (int i = 0; i <= str1.length() - str2.length(); i++){
+                boolean equal = true;
+                for (int j = 0; j < str2.length(); j++) {
+                     if (str2.charAt(j) !=  str1.charAt(i+j)) {
+                        equal = false;
+                        break;
+                    }
+                }
+                if (equal){
+                return true; 
+                }
+            }
+            
+        return false; 
+        }
     }
-}
